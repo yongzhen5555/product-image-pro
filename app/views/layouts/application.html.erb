@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProductImagePro</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@4.11.0/styles.min.css" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="app-wrapper">
+      <div class="app-content">
+        <main role="main">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+
+    <%= render 'layouts/flash_messages' %>
+    <script src="https://cdn.shopify.com/s/assets/external/app.js?<%= Time.now.strftime('%Y%m%d%H') %>"></script>
+
+    <% if content_for?(:javascript) %>
+      <div id="ContentForJavascript">
+        <%= yield :javascript %>
+      </div>
+    <% end %>
+  </body>
+</html>
